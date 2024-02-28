@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+     body{
+      margin: 0;
+     }
+    </style>
+</head>
+<body>
+
+    <script type="module">
+        import * as THREE from'../three.module.js';
+       import{GLTFLoader} from './GLTFLoader.js';
+        import{OrbitControls} from './OrbitControls.js';
+        const scene = new THREE.Scene();
+        const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 100000);
+        
+        const renderer = new THREE.WebGLRenderer();
+
+       
+        
+
+        renderer.setSize(window.innerWidth, window.innerHeight);
+        document.body.appendChild(renderer.domElement);
+        renderer.setClearColor('cyan');
+
+//============light add=============
+
+const light = new THREE.AmbientLight( 0x404040,50); // soft white light
+scene.add( light );
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//================place==============
+      const loader = new GLTFLoader();
+        loader.load('./2house.glb',function(gltf){
+          const model = gltf.scene; 
+          model.position.set(0,-10,0);
+          model.scale.set(50,50,50);
+         scene.add(model);
+        });
+      
+
+        
+        
+
+
+        //===============================
+        camera.position.z = 150;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+       const controls = new OrbitControls(camera,renderer.domElement);
+        function animate() {
+          requestAnimationFrame(animate);
+         
+        
+          renderer.render(scene, camera);
+        }
+        
+        animate();
+ </script>
+</body>
+</html>
